@@ -1,0 +1,5203 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+
+  <div class="border-box-sizing">
+    <div class="container">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[503]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import Statements</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[&#160;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## ***IMPORTANT NOTE**</span>
+<span class="c1">## ***THIS HOMEWORK HAS BEEN DONE WITH PYTHON 3***</span>
+<span class="c1">## ***PLEASE SEE MY EMAIL SENT 9/30***</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[504]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Change working directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">khrab</span><span class="se">\\</span><span class="s1">1 - Machine Learning</span><span class="se">\\</span><span class="s1">Week 2&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[505]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Load text file via read_csv</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;bank_data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">bank_data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[505]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ID12101</td>
+      <td>48</td>
+      <td>17546.00</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ID12102</td>
+      <td>40</td>
+      <td>30085.10</td>
+      <td>3</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ID12103</td>
+      <td>51</td>
+      <td>16575.40</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ID12104</td>
+      <td>23</td>
+      <td>20375.40</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ID12105</td>
+      <td>57</td>
+      <td>50576.30</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ID12106</td>
+      <td>57</td>
+      <td>37869.60</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ID12107</td>
+      <td>22</td>
+      <td>8877.07</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ID12108</td>
+      <td>58</td>
+      <td>24946.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ID12109</td>
+      <td>37</td>
+      <td>25304.30</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ID12110</td>
+      <td>54</td>
+      <td>24212.10</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>ID12111</td>
+      <td>66</td>
+      <td>59803.90</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ID12112</td>
+      <td>52</td>
+      <td>26658.80</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ID12113</td>
+      <td>44</td>
+      <td>15735.80</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>ID12114</td>
+      <td>66</td>
+      <td>55204.70</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ID12115</td>
+      <td>36</td>
+      <td>19474.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ID12116</td>
+      <td>38</td>
+      <td>22342.10</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ID12117</td>
+      <td>37</td>
+      <td>17729.80</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ID12118</td>
+      <td>46</td>
+      <td>41016.00</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>ID12119</td>
+      <td>62</td>
+      <td>26909.20</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ID12120</td>
+      <td>31</td>
+      <td>22522.80</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>ID12121</td>
+      <td>61</td>
+      <td>57880.70</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>ID12122</td>
+      <td>50</td>
+      <td>16497.30</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>ID12123</td>
+      <td>54</td>
+      <td>38446.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>ID12124</td>
+      <td>27</td>
+      <td>15538.80</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>ID12125</td>
+      <td>22</td>
+      <td>12640.30</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>ID12126</td>
+      <td>56</td>
+      <td>41034.00</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>ID12127</td>
+      <td>45</td>
+      <td>20809.70</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>ID12128</td>
+      <td>39</td>
+      <td>20114.00</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>ID12129</td>
+      <td>39</td>
+      <td>29359.10</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>ID12130</td>
+      <td>61</td>
+      <td>24270.10</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>ID12671</td>
+      <td>49</td>
+      <td>33665.50</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>ID12672</td>
+      <td>40</td>
+      <td>36166.20</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>ID12673</td>
+      <td>33</td>
+      <td>27712.90</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>SUBURBAN</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>ID12674</td>
+      <td>39</td>
+      <td>22400.70</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>ID12675</td>
+      <td>43</td>
+      <td>28469.90</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>575</th>
+      <td>ID12676</td>
+      <td>37</td>
+      <td>30488.00</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>576</th>
+      <td>ID12677</td>
+      <td>24</td>
+      <td>19160.30</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>577</th>
+      <td>ID12678</td>
+      <td>62</td>
+      <td>45342.50</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>578</th>
+      <td>ID12679</td>
+      <td>18</td>
+      <td>6294.21</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>579</th>
+      <td>ID12680</td>
+      <td>47</td>
+      <td>25127.70</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>580</th>
+      <td>ID12681</td>
+      <td>63</td>
+      <td>51879.30</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>581</th>
+      <td>ID12682</td>
+      <td>20</td>
+      <td>12644.90</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>582</th>
+      <td>ID12683</td>
+      <td>46</td>
+      <td>21984.40</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>583</th>
+      <td>ID12684</td>
+      <td>47</td>
+      <td>29093.10</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>584</th>
+      <td>ID12685</td>
+      <td>33</td>
+      <td>23528.40</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>585</th>
+      <td>ID12686</td>
+      <td>20</td>
+      <td>9516.91</td>
+      <td>3</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>586</th>
+      <td>ID12687</td>
+      <td>20</td>
+      <td>18364.90</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>587</th>
+      <td>ID12688</td>
+      <td>43</td>
+      <td>31273.80</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>588</th>
+      <td>ID12689</td>
+      <td>58</td>
+      <td>49673.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>589</th>
+      <td>ID12690</td>
+      <td>29</td>
+      <td>12623.40</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>590</th>
+      <td>ID12691</td>
+      <td>25</td>
+      <td>23818.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>591</th>
+      <td>ID12692</td>
+      <td>40</td>
+      <td>31473.90</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>592</th>
+      <td>ID12693</td>
+      <td>48</td>
+      <td>20268.00</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>593</th>
+      <td>ID12694</td>
+      <td>65</td>
+      <td>51417.00</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>594</th>
+      <td>ID12695</td>
+      <td>59</td>
+      <td>30971.80</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>595</th>
+      <td>ID12696</td>
+      <td>61</td>
+      <td>47025.00</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>596</th>
+      <td>ID12697</td>
+      <td>30</td>
+      <td>9672.25</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>597</th>
+      <td>ID12698</td>
+      <td>31</td>
+      <td>15976.30</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>598</th>
+      <td>ID12699</td>
+      <td>29</td>
+      <td>14711.80</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+    </tr>
+    <tr>
+      <th>599</th>
+      <td>ID12700</td>
+      <td>38</td>
+      <td>26671.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+  </tbody>
+</table>
+<p>600 rows &#215; 12 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[506]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 1.Explore the general characteristics of the data as a whole:</span>
+<span class="c1">## examine the means, standard deviations, and other statistics associated </span>
+<span class="c1">## with the numerical attributes; show the distributions of values associated</span>
+<span class="c1">## with categorical attributes; etc.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[507]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Descriptive Statistics for Numeric Data</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[507]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>600.000000</td>
+      <td>600.000000</td>
+      <td>600.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>42.395000</td>
+      <td>27524.031217</td>
+      <td>1.011667</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.424947</td>
+      <td>12899.468246</td>
+      <td>1.056752</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>5014.210000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>30.000000</td>
+      <td>17264.500000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>42.000000</td>
+      <td>24925.300000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>55.250000</td>
+      <td>36172.675000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>63130.100000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[508]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Some sample Distributions from Categorical Data</span>
+
+<span class="c1">## Male vs. Female Counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Male vs. Female Counts: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Male vs. Female Counts: 
+
+MALE      300
+FEMALE    300
+Name: gender, dtype: int64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[509]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Means grouped by Car Ownership</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;car&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[509]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+    <tr>
+      <th>car</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NO</th>
+      <td>41.289474</td>
+      <td>26486.807336</td>
+      <td>0.973684</td>
+    </tr>
+    <tr>
+      <th>YES</th>
+      <td>43.530405</td>
+      <td>28589.288176</td>
+      <td>1.050676</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[510]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Medians grouped by Gender</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[510]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+    <tr>
+      <th>gender</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>FEMALE</th>
+      <td>44</td>
+      <td>25448.9</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>MALE</th>
+      <td>40</td>
+      <td>24449.2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[511]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Clients with Income &gt;20k who also own car&quot;</span><span class="p">)</span>
+
+<span class="n">own_car</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;YES&#39;</span><span class="p">])</span>
+<span class="n">and_income_over_20k</span> <span class="o">=</span> <span class="p">(</span><span class="n">own_car</span><span class="p">[</span><span class="n">own_car</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">20000</span><span class="p">])</span>
+<span class="n">and_income_over_20k</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;car&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+Clients with Income &gt;20k who also own car
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[511]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>car
+YES    209
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[512]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Suppose that the hypothetical bank is particularly interested in customers </span>
+<span class="c1">## who buy the PEP (Personal Equity Plan) product. Compare and contrast the </span>
+<span class="c1">## subsets of customers who buy and don&#39;t buy the PEP. Compute summaries </span>
+<span class="c1">## (as in part 1) of the selected data with respect to all other attributes. </span>
+<span class="c1">## Can you observe any significant differences between these segments of </span>
+<span class="c1">## customers? Discuss your observations. </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[513]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Descriptive Statistics on Individuals who DO buy PEP</span>
+<span class="n">buys_pep</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;pep&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;YES&#39;</span><span class="p">])</span>
+<span class="n">buys_pep</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[513]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>274.000000</td>
+      <td>274.000000</td>
+      <td>274.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>45.127737</td>
+      <td>30644.919453</td>
+      <td>0.945255</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.327991</td>
+      <td>13609.613043</td>
+      <td>0.860571</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>7756.360000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>34.000000</td>
+      <td>19639.475000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>45.000000</td>
+      <td>28080.050000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>58.000000</td>
+      <td>38458.350000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>63130.100000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[514]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Descriptive Statistics on Individuals who do NOT buy PEP</span>
+<span class="n">no_pep</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;pep&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;NO&#39;</span><span class="p">])</span>
+<span class="n">no_pep</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[514]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>326.000000</td>
+      <td>326.000000</td>
+      <td>326.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>40.098160</td>
+      <td>24900.953374</td>
+      <td>1.067485</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.123506</td>
+      <td>11661.123422</td>
+      <td>1.195524</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>5014.210000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>27.000000</td>
+      <td>15366.475000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>40.000000</td>
+      <td>23105.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>51.000000</td>
+      <td>31210.900000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>67.000000</td>
+      <td>61554.600000</td>
+      <td>3.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[515]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## From exploring this data I can tell that the people who buy PEP</span>
+<span class="c1">## are generally a little bit older (+5 years on average), and </span>
+<span class="c1">## make more money (~ approximately $6,000)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[516]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">buys_pep</span><span class="p">[</span><span class="s2">&quot;mortgage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>NO     182
+YES     92
+Name: mortgage, dtype: int64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[517]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">no_pep</span><span class="p">[</span><span class="s2">&quot;mortgage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>NO     209
+YES    117
+Name: mortgage, dtype: int64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[518]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## We can also see that 100% of those who have a mortgage buy PEP,</span>
+<span class="c1">## while only 117/326 (35%) of those without mortgages buy PEP!</span>
+<span class="c1">## So home ownership is a big indicator in predicting if a customer will buy</span>
+<span class="c1">## PEP.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[519]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 3.Use z-score normalization to standardize the values of the income </span>
+<span class="c1">## attribute. [Do not change the original income attribute in the table.]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[520]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;income_znorm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[521]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 4.Discretize the age attribute into 3 categories (corresponding to &quot;young&quot;, </span>
+<span class="c1">## &quot;mid-age&quot;, and &quot;old&quot;). [Do not change the original age attribute in the</span>
+<span class="c1">## table.]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[522]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Relatively Arbitrarily binning into young, mid age, and old</span>
+<span class="c1">## Note this is based on my perception of age groupings!</span>
+
+<span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;age_bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;young&#39;</span><span class="p">,</span> <span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="s1">&#39;old&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[523]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 5. Use Min-Max Normalization to transform the values of all numeric attributes</span>
+<span class="c1">## (income, age, children) in the original table (before the transformations</span>
+<span class="c1">## in parts 3 and 4 above) onto the range 0.0-1.0.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[524]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## NOTE: I LEFT THE ORIGINAL AGE,INCOME VALUES TO USE IN #8</span>
+<span class="c1">## WHICH REQUESTED A SCATTER PLOT BASED ON NON-NORMALIZED DATA</span>
+
+<span class="n">min_inc</span> <span class="o">=</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">max_inc</span> <span class="o">=</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;income_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="o">-</span><span class="n">min_inc</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">max_inc</span><span class="o">-</span><span class="n">min_inc</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]]</span>
+
+<span class="n">min_age</span> <span class="o">=</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">max_age</span> <span class="o">=</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;age_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="o">-</span><span class="n">min_age</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">max_age</span><span class="o">-</span><span class="n">min_age</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]]</span>
+
+<span class="n">min_kid</span> <span class="o">=</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;children&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">max_kid</span> <span class="o">=</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;children&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;children_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="o">-</span><span class="n">min_kid</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">max_kid</span><span class="o">-</span><span class="n">min_kid</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;children&#39;</span><span class="p">]]</span>
+
+<span class="n">bank_data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[524]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>gender</th>
+      <th>region</th>
+      <th>married</th>
+      <th>car</th>
+      <th>savings_acct</th>
+      <th>current_acct</th>
+      <th>mortgage</th>
+      <th>pep</th>
+      <th>income_znorm</th>
+      <th>age_bins</th>
+      <th>income_norm</th>
+      <th>age_norm</th>
+      <th>children_norm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ID12101</td>
+      <td>48</td>
+      <td>17546.00</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>-0.773523</td>
+      <td>mid</td>
+      <td>0.215634</td>
+      <td>0.612245</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ID12102</td>
+      <td>40</td>
+      <td>30085.10</td>
+      <td>3</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>0.198541</td>
+      <td>mid</td>
+      <td>0.431395</td>
+      <td>0.448980</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ID12103</td>
+      <td>51</td>
+      <td>16575.40</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.848766</td>
+      <td>mid</td>
+      <td>0.198933</td>
+      <td>0.673469</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ID12104</td>
+      <td>23</td>
+      <td>20375.40</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.554180</td>
+      <td>young</td>
+      <td>0.264320</td>
+      <td>0.102041</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ID12105</td>
+      <td>57</td>
+      <td>50576.30</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>1.787071</td>
+      <td>mid</td>
+      <td>0.783987</td>
+      <td>0.795918</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ID12106</td>
+      <td>57</td>
+      <td>37869.60</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>0.802015</td>
+      <td>mid</td>
+      <td>0.565343</td>
+      <td>0.795918</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ID12107</td>
+      <td>22</td>
+      <td>8877.07</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>-1.445560</td>
+      <td>young</td>
+      <td>0.066468</td>
+      <td>0.081633</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ID12108</td>
+      <td>58</td>
+      <td>24946.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.199809</td>
+      <td>mid</td>
+      <td>0.342977</td>
+      <td>0.816327</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ID12109</td>
+      <td>37</td>
+      <td>25304.30</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.172079</td>
+      <td>mid</td>
+      <td>0.349132</td>
+      <td>0.387755</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ID12110</td>
+      <td>54</td>
+      <td>24212.10</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.256749</td>
+      <td>mid</td>
+      <td>0.330338</td>
+      <td>0.734694</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>ID12111</td>
+      <td>66</td>
+      <td>59803.90</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>2.502419</td>
+      <td>old</td>
+      <td>0.942766</td>
+      <td>0.979592</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ID12112</td>
+      <td>52</td>
+      <td>26658.80</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-0.067075</td>
+      <td>mid</td>
+      <td>0.372438</td>
+      <td>0.693878</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ID12113</td>
+      <td>44</td>
+      <td>15735.80</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>-0.913854</td>
+      <td>mid</td>
+      <td>0.184486</td>
+      <td>0.530612</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>ID12114</td>
+      <td>66</td>
+      <td>55204.70</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>2.145877</td>
+      <td>old</td>
+      <td>0.863628</td>
+      <td>0.979592</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ID12115</td>
+      <td>36</td>
+      <td>19474.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-0.624013</td>
+      <td>mid</td>
+      <td>0.248820</td>
+      <td>0.367347</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ID12116</td>
+      <td>38</td>
+      <td>22342.10</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-0.401717</td>
+      <td>mid</td>
+      <td>0.298161</td>
+      <td>0.408163</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ID12117</td>
+      <td>37</td>
+      <td>17729.80</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-0.759274</td>
+      <td>mid</td>
+      <td>0.218797</td>
+      <td>0.387755</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ID12118</td>
+      <td>46</td>
+      <td>41016.00</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>1.045932</td>
+      <td>mid</td>
+      <td>0.619483</td>
+      <td>0.571429</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>ID12119</td>
+      <td>62</td>
+      <td>26909.20</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>-0.047663</td>
+      <td>old</td>
+      <td>0.376747</td>
+      <td>0.897959</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ID12120</td>
+      <td>31</td>
+      <td>22522.80</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.387708</td>
+      <td>young</td>
+      <td>0.301270</td>
+      <td>0.265306</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>ID12121</td>
+      <td>61</td>
+      <td>57880.70</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>2.353327</td>
+      <td>old</td>
+      <td>0.909674</td>
+      <td>0.877551</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>ID12122</td>
+      <td>50</td>
+      <td>16497.30</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.854821</td>
+      <td>mid</td>
+      <td>0.197590</td>
+      <td>0.653061</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>ID12123</td>
+      <td>54</td>
+      <td>38446.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.846746</td>
+      <td>mid</td>
+      <td>0.575271</td>
+      <td>0.734694</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>ID12124</td>
+      <td>27</td>
+      <td>15538.80</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-0.929126</td>
+      <td>young</td>
+      <td>0.181097</td>
+      <td>0.183673</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>ID12125</td>
+      <td>22</td>
+      <td>12640.30</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-1.153825</td>
+      <td>young</td>
+      <td>0.131222</td>
+      <td>0.081633</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>ID12126</td>
+      <td>56</td>
+      <td>41034.00</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>1.047328</td>
+      <td>mid</td>
+      <td>0.619792</td>
+      <td>0.775510</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>ID12127</td>
+      <td>45</td>
+      <td>20809.70</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-0.520512</td>
+      <td>mid</td>
+      <td>0.271793</td>
+      <td>0.551020</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>ID12128</td>
+      <td>39</td>
+      <td>20114.00</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>-0.574445</td>
+      <td>mid</td>
+      <td>0.259822</td>
+      <td>0.428571</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>ID12129</td>
+      <td>39</td>
+      <td>29359.10</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>0.142259</td>
+      <td>mid</td>
+      <td>0.418902</td>
+      <td>0.428571</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>ID12130</td>
+      <td>61</td>
+      <td>24270.10</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>-0.252253</td>
+      <td>old</td>
+      <td>0.331336</td>
+      <td>0.877551</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>ID12671</td>
+      <td>49</td>
+      <td>33665.50</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.476102</td>
+      <td>mid</td>
+      <td>0.493003</td>
+      <td>0.632653</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>ID12672</td>
+      <td>40</td>
+      <td>36166.20</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.669963</td>
+      <td>mid</td>
+      <td>0.536032</td>
+      <td>0.448980</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>ID12673</td>
+      <td>33</td>
+      <td>27712.90</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>SUBURBAN</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>0.014642</td>
+      <td>young</td>
+      <td>0.390576</td>
+      <td>0.306122</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>ID12674</td>
+      <td>39</td>
+      <td>22400.70</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.397174</td>
+      <td>mid</td>
+      <td>0.299169</td>
+      <td>0.428571</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>ID12675</td>
+      <td>43</td>
+      <td>28469.90</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.073326</td>
+      <td>mid</td>
+      <td>0.403602</td>
+      <td>0.510204</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>575</th>
+      <td>ID12676</td>
+      <td>37</td>
+      <td>30488.00</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>0.229774</td>
+      <td>mid</td>
+      <td>0.438327</td>
+      <td>0.387755</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>576</th>
+      <td>ID12677</td>
+      <td>24</td>
+      <td>19160.30</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>-0.648378</td>
+      <td>young</td>
+      <td>0.243412</td>
+      <td>0.122449</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>577</th>
+      <td>ID12678</td>
+      <td>62</td>
+      <td>45342.50</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>1.381334</td>
+      <td>old</td>
+      <td>0.693929</td>
+      <td>0.897959</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>578</th>
+      <td>ID12679</td>
+      <td>18</td>
+      <td>6294.21</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-1.645790</td>
+      <td>young</td>
+      <td>0.022025</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>579</th>
+      <td>ID12680</td>
+      <td>47</td>
+      <td>25127.70</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.185770</td>
+      <td>mid</td>
+      <td>0.346093</td>
+      <td>0.591837</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>580</th>
+      <td>ID12681</td>
+      <td>63</td>
+      <td>51879.30</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>1.888083</td>
+      <td>old</td>
+      <td>0.806408</td>
+      <td>0.918367</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>581</th>
+      <td>ID12682</td>
+      <td>20</td>
+      <td>12644.90</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-1.153469</td>
+      <td>young</td>
+      <td>0.131301</td>
+      <td>0.040816</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>582</th>
+      <td>ID12683</td>
+      <td>46</td>
+      <td>21984.40</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.429446</td>
+      <td>mid</td>
+      <td>0.292006</td>
+      <td>0.571429</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>583</th>
+      <td>ID12684</td>
+      <td>47</td>
+      <td>29093.10</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0.121638</td>
+      <td>mid</td>
+      <td>0.414325</td>
+      <td>0.591837</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>584</th>
+      <td>ID12685</td>
+      <td>33</td>
+      <td>23528.40</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>-0.309752</td>
+      <td>young</td>
+      <td>0.318574</td>
+      <td>0.306122</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>585</th>
+      <td>ID12686</td>
+      <td>20</td>
+      <td>9516.91</td>
+      <td>3</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-1.395958</td>
+      <td>young</td>
+      <td>0.077478</td>
+      <td>0.040816</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>586</th>
+      <td>ID12687</td>
+      <td>20</td>
+      <td>18364.90</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>-0.710039</td>
+      <td>young</td>
+      <td>0.229725</td>
+      <td>0.040816</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>587</th>
+      <td>ID12688</td>
+      <td>43</td>
+      <td>31273.80</td>
+      <td>1</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>0.290692</td>
+      <td>mid</td>
+      <td>0.451849</td>
+      <td>0.510204</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>588</th>
+      <td>ID12689</td>
+      <td>58</td>
+      <td>49673.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>1.717092</td>
+      <td>mid</td>
+      <td>0.768454</td>
+      <td>0.816327</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>589</th>
+      <td>ID12690</td>
+      <td>29</td>
+      <td>12623.40</td>
+      <td>1</td>
+      <td>MALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-1.155135</td>
+      <td>young</td>
+      <td>0.130931</td>
+      <td>0.224490</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>590</th>
+      <td>ID12691</td>
+      <td>25</td>
+      <td>23818.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.287255</td>
+      <td>young</td>
+      <td>0.323567</td>
+      <td>0.142857</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>591</th>
+      <td>ID12692</td>
+      <td>40</td>
+      <td>31473.90</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>0.306204</td>
+      <td>mid</td>
+      <td>0.455292</td>
+      <td>0.448980</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>592</th>
+      <td>ID12693</td>
+      <td>48</td>
+      <td>20268.00</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-0.562506</td>
+      <td>mid</td>
+      <td>0.262472</td>
+      <td>0.612245</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>593</th>
+      <td>ID12694</td>
+      <td>65</td>
+      <td>51417.00</td>
+      <td>2</td>
+      <td>MALE</td>
+      <td>SUBURBAN</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>1.852244</td>
+      <td>old</td>
+      <td>0.798453</td>
+      <td>0.959184</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>594</th>
+      <td>ID12695</td>
+      <td>59</td>
+      <td>30971.80</td>
+      <td>3</td>
+      <td>FEMALE</td>
+      <td>RURAL</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>0.267280</td>
+      <td>mid</td>
+      <td>0.446652</td>
+      <td>0.836735</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>595</th>
+      <td>ID12696</td>
+      <td>61</td>
+      <td>47025.00</td>
+      <td>2</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>1.511765</td>
+      <td>old</td>
+      <td>0.722880</td>
+      <td>0.877551</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>596</th>
+      <td>ID12697</td>
+      <td>30</td>
+      <td>9672.25</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>-1.383916</td>
+      <td>young</td>
+      <td>0.080151</td>
+      <td>0.244898</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>597</th>
+      <td>ID12698</td>
+      <td>31</td>
+      <td>15976.30</td>
+      <td>0</td>
+      <td>FEMALE</td>
+      <td>TOWN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>-0.895210</td>
+      <td>young</td>
+      <td>0.188625</td>
+      <td>0.265306</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>598</th>
+      <td>ID12699</td>
+      <td>29</td>
+      <td>14711.80</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>INNER_CITY</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>-0.993237</td>
+      <td>young</td>
+      <td>0.166866</td>
+      <td>0.224490</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>599</th>
+      <td>ID12700</td>
+      <td>38</td>
+      <td>26671.60</td>
+      <td>0</td>
+      <td>MALE</td>
+      <td>TOWN</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>-0.066083</td>
+      <td>mid</td>
+      <td>0.372659</td>
+      <td>0.408163</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>600 rows &#215; 17 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[525]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 6.Convert the table (after normalization in part 5) into the standard </span>
+<span class="c1">## spreadsheet format. Note that this</span>
+<span class="c1">## requires converting each categorical attribute into multiple binary (&quot;dummy&quot;)</span>
+<span class="c1">## attributes (one for each values</span>
+<span class="c1">## of the categorical attribute) and assigning binary values corresponding to the</span>
+<span class="c1">## presence or not presence of</span>
+<span class="c1">## the attribute value in the original record). The numeric attributes should</span>
+<span class="c1">## remain unchanged. Save this new</span>
+<span class="c1">## table into a file called bank_numeric.csv and submit it along with your </span>
+<span class="c1">## assignment. [Hint: you might</span>
+<span class="c1">## consider using the get_dummies for Pandas data frames.]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[526]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## NOTE: When creating dummy variables, since a lot of the values are simply</span>
+<span class="c1">## &#39;yes/no&#39;, when looking at the sheet you get a bunch of YES NO YES NO YES NO</span>
+<span class="c1">## attribute labels, which is very confusing... so, I relabeled the yes/no&#39;s</span>
+<span class="c1">## to give a hint as to what they&#39;re being used for so they&#39;d be more</span>
+<span class="c1">## descriptive.</span>
+
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">married</span> <span class="o">==</span> <span class="s1">&#39;YES&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;married&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MARRIED_YES&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">married</span> <span class="o">==</span> <span class="s1">&#39;NO&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;married&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MARRIED_NO&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">car</span> <span class="o">==</span> <span class="s1">&#39;YES&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;car&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;CAR_YES&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">car</span> <span class="o">==</span> <span class="s1">&#39;NO&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;car&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;CAR_NO&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">savings_acct</span> <span class="o">==</span> <span class="s1">&#39;YES&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;savings_acct&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;SAVINGS_YES&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">savings_acct</span> <span class="o">==</span> <span class="s1">&#39;NO&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;savings_acct&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;SAVINGS_NO&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">current_acct</span> <span class="o">==</span> <span class="s1">&#39;YES&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;current_acct&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;CURRENT_YES&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">current_acct</span> <span class="o">==</span> <span class="s1">&#39;NO&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;current_acct&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;CURRENT_NO&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">mortgage</span> <span class="o">==</span> <span class="s1">&#39;YES&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;mortgage&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MORTGAGE_YES&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">mortgage</span> <span class="o">==</span> <span class="s1">&#39;NO&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;mortgage&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MORTGAGE_NO&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">pep</span> <span class="o">==</span> <span class="s1">&#39;YES&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;pep&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PEP_YES&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">bank_data</span><span class="o">.</span><span class="n">pep</span> <span class="o">==</span> <span class="s1">&#39;NO&#39;</span><span class="p">)</span>
+<span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;pep&#39;</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PEP_NO&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[527]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">##Dummy Variable setup (manual)</span>
+<span class="n">dummy_gender</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_gender</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dummy_region</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_region</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dummy_married</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;married&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_married</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dummy_car</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_car</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dummy_savings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;savings_acct&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_savings</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dummy_current</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;current_acct&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_current</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dummy_mortgage</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;mortgage&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_mortgage</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dummy_pep</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;pep&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_pep</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dummy_age_cats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s1">&#39;age_bins&#39;</span><span class="p">])</span>
+<span class="n">bank_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bank_data</span><span class="p">,</span> <span class="n">dummy_age_cats</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[528]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Dropping categorical data</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;married&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;savings_acct&#39;</span><span class="p">,</span> <span class="s1">&#39;current_acct&#39;</span><span class="p">,</span> <span class="s1">&#39;mortgage&#39;</span><span class="p">,</span> <span class="s1">&#39;pep&#39;</span><span class="p">,</span> <span class="s1">&#39;age_bins&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[528]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>age</th>
+      <th>income</th>
+      <th>children</th>
+      <th>income_znorm</th>
+      <th>income_norm</th>
+      <th>age_norm</th>
+      <th>children_norm</th>
+      <th>FEMALE</th>
+      <th>MALE</th>
+      <th>...</th>
+      <th>SAVINGS_YES</th>
+      <th>CURRENT_NO</th>
+      <th>CURRENT_YES</th>
+      <th>MORTGAGE_NO</th>
+      <th>MORTGAGE_YES</th>
+      <th>PEP_NO</th>
+      <th>PEP_YES</th>
+      <th>young</th>
+      <th>mid</th>
+      <th>old</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ID12101</td>
+      <td>48</td>
+      <td>17546.00</td>
+      <td>1</td>
+      <td>-0.773523</td>
+      <td>0.215634</td>
+      <td>0.612245</td>
+      <td>0.333333</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ID12102</td>
+      <td>40</td>
+      <td>30085.10</td>
+      <td>3</td>
+      <td>0.198541</td>
+      <td>0.431395</td>
+      <td>0.448980</td>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ID12103</td>
+      <td>51</td>
+      <td>16575.40</td>
+      <td>0</td>
+      <td>-0.848766</td>
+      <td>0.198933</td>
+      <td>0.673469</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ID12104</td>
+      <td>23</td>
+      <td>20375.40</td>
+      <td>3</td>
+      <td>-0.554180</td>
+      <td>0.264320</td>
+      <td>0.102041</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ID12105</td>
+      <td>57</td>
+      <td>50576.30</td>
+      <td>0</td>
+      <td>1.787071</td>
+      <td>0.783987</td>
+      <td>0.795918</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ID12106</td>
+      <td>57</td>
+      <td>37869.60</td>
+      <td>2</td>
+      <td>0.802015</td>
+      <td>0.565343</td>
+      <td>0.795918</td>
+      <td>0.666667</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ID12107</td>
+      <td>22</td>
+      <td>8877.07</td>
+      <td>0</td>
+      <td>-1.445560</td>
+      <td>0.066468</td>
+      <td>0.081633</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ID12108</td>
+      <td>58</td>
+      <td>24946.60</td>
+      <td>0</td>
+      <td>-0.199809</td>
+      <td>0.342977</td>
+      <td>0.816327</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ID12109</td>
+      <td>37</td>
+      <td>25304.30</td>
+      <td>2</td>
+      <td>-0.172079</td>
+      <td>0.349132</td>
+      <td>0.387755</td>
+      <td>0.666667</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ID12110</td>
+      <td>54</td>
+      <td>24212.10</td>
+      <td>2</td>
+      <td>-0.256749</td>
+      <td>0.330338</td>
+      <td>0.734694</td>
+      <td>0.666667</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>ID12111</td>
+      <td>66</td>
+      <td>59803.90</td>
+      <td>0</td>
+      <td>2.502419</td>
+      <td>0.942766</td>
+      <td>0.979592</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ID12112</td>
+      <td>52</td>
+      <td>26658.80</td>
+      <td>0</td>
+      <td>-0.067075</td>
+      <td>0.372438</td>
+      <td>0.693878</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ID12113</td>
+      <td>44</td>
+      <td>15735.80</td>
+      <td>1</td>
+      <td>-0.913854</td>
+      <td>0.184486</td>
+      <td>0.530612</td>
+      <td>0.333333</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>ID12114</td>
+      <td>66</td>
+      <td>55204.70</td>
+      <td>1</td>
+      <td>2.145877</td>
+      <td>0.863628</td>
+      <td>0.979592</td>
+      <td>0.333333</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ID12115</td>
+      <td>36</td>
+      <td>19474.60</td>
+      <td>0</td>
+      <td>-0.624013</td>
+      <td>0.248820</td>
+      <td>0.367347</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ID12116</td>
+      <td>38</td>
+      <td>22342.10</td>
+      <td>0</td>
+      <td>-0.401717</td>
+      <td>0.298161</td>
+      <td>0.408163</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ID12117</td>
+      <td>37</td>
+      <td>17729.80</td>
+      <td>2</td>
+      <td>-0.759274</td>
+      <td>0.218797</td>
+      <td>0.387755</td>
+      <td>0.666667</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ID12118</td>
+      <td>46</td>
+      <td>41016.00</td>
+      <td>0</td>
+      <td>1.045932</td>
+      <td>0.619483</td>
+      <td>0.571429</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>ID12119</td>
+      <td>62</td>
+      <td>26909.20</td>
+      <td>0</td>
+      <td>-0.047663</td>
+      <td>0.376747</td>
+      <td>0.897959</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ID12120</td>
+      <td>31</td>
+      <td>22522.80</td>
+      <td>0</td>
+      <td>-0.387708</td>
+      <td>0.301270</td>
+      <td>0.265306</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>ID12121</td>
+      <td>61</td>
+      <td>57880.70</td>
+      <td>2</td>
+      <td>2.353327</td>
+      <td>0.909674</td>
+      <td>0.877551</td>
+      <td>0.666667</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>ID12122</td>
+      <td>50</td>
+      <td>16497.30</td>
+      <td>2</td>
+      <td>-0.854821</td>
+      <td>0.197590</td>
+      <td>0.653061</td>
+      <td>0.666667</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>ID12123</td>
+      <td>54</td>
+      <td>38446.60</td>
+      <td>0</td>
+      <td>0.846746</td>
+      <td>0.575271</td>
+      <td>0.734694</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>ID12124</td>
+      <td>27</td>
+      <td>15538.80</td>
+      <td>0</td>
+      <td>-0.929126</td>
+      <td>0.181097</td>
+      <td>0.183673</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>ID12125</td>
+      <td>22</td>
+      <td>12640.30</td>
+      <td>2</td>
+      <td>-1.153825</td>
+      <td>0.131222</td>
+      <td>0.081633</td>
+      <td>0.666667</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>ID12126</td>
+      <td>56</td>
+      <td>41034.00</td>
+      <td>0</td>
+      <td>1.047328</td>
+      <td>0.619792</td>
+      <td>0.775510</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>ID12127</td>
+      <td>45</td>
+      <td>20809.70</td>
+      <td>0</td>
+      <td>-0.520512</td>
+      <td>0.271793</td>
+      <td>0.551020</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>ID12128</td>
+      <td>39</td>
+      <td>20114.00</td>
+      <td>1</td>
+      <td>-0.574445</td>
+      <td>0.259822</td>
+      <td>0.428571</td>
+      <td>0.333333</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>ID12129</td>
+      <td>39</td>
+      <td>29359.10</td>
+      <td>3</td>
+      <td>0.142259</td>
+      <td>0.418902</td>
+      <td>0.428571</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>ID12130</td>
+      <td>61</td>
+      <td>24270.10</td>
+      <td>1</td>
+      <td>-0.252253</td>
+      <td>0.331336</td>
+      <td>0.877551</td>
+      <td>0.333333</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>ID12671</td>
+      <td>49</td>
+      <td>33665.50</td>
+      <td>3</td>
+      <td>0.476102</td>
+      <td>0.493003</td>
+      <td>0.632653</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>ID12672</td>
+      <td>40</td>
+      <td>36166.20</td>
+      <td>0</td>
+      <td>0.669963</td>
+      <td>0.536032</td>
+      <td>0.448980</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>ID12673</td>
+      <td>33</td>
+      <td>27712.90</td>
+      <td>2</td>
+      <td>0.014642</td>
+      <td>0.390576</td>
+      <td>0.306122</td>
+      <td>0.666667</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>ID12674</td>
+      <td>39</td>
+      <td>22400.70</td>
+      <td>2</td>
+      <td>-0.397174</td>
+      <td>0.299169</td>
+      <td>0.428571</td>
+      <td>0.666667</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>ID12675</td>
+      <td>43</td>
+      <td>28469.90</td>
+      <td>0</td>
+      <td>0.073326</td>
+      <td>0.403602</td>
+      <td>0.510204</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>575</th>
+      <td>ID12676</td>
+      <td>37</td>
+      <td>30488.00</td>
+      <td>0</td>
+      <td>0.229774</td>
+      <td>0.438327</td>
+      <td>0.387755</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>576</th>
+      <td>ID12677</td>
+      <td>24</td>
+      <td>19160.30</td>
+      <td>1</td>
+      <td>-0.648378</td>
+      <td>0.243412</td>
+      <td>0.122449</td>
+      <td>0.333333</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>577</th>
+      <td>ID12678</td>
+      <td>62</td>
+      <td>45342.50</td>
+      <td>0</td>
+      <td>1.381334</td>
+      <td>0.693929</td>
+      <td>0.897959</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>578</th>
+      <td>ID12679</td>
+      <td>18</td>
+      <td>6294.21</td>
+      <td>0</td>
+      <td>-1.645790</td>
+      <td>0.022025</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>579</th>
+      <td>ID12680</td>
+      <td>47</td>
+      <td>25127.70</td>
+      <td>0</td>
+      <td>-0.185770</td>
+      <td>0.346093</td>
+      <td>0.591837</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>580</th>
+      <td>ID12681</td>
+      <td>63</td>
+      <td>51879.30</td>
+      <td>2</td>
+      <td>1.888083</td>
+      <td>0.806408</td>
+      <td>0.918367</td>
+      <td>0.666667</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>581</th>
+      <td>ID12682</td>
+      <td>20</td>
+      <td>12644.90</td>
+      <td>2</td>
+      <td>-1.153469</td>
+      <td>0.131301</td>
+      <td>0.040816</td>
+      <td>0.666667</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>582</th>
+      <td>ID12683</td>
+      <td>46</td>
+      <td>21984.40</td>
+      <td>3</td>
+      <td>-0.429446</td>
+      <td>0.292006</td>
+      <td>0.571429</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>583</th>
+      <td>ID12684</td>
+      <td>47</td>
+      <td>29093.10</td>
+      <td>2</td>
+      <td>0.121638</td>
+      <td>0.414325</td>
+      <td>0.591837</td>
+      <td>0.666667</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>584</th>
+      <td>ID12685</td>
+      <td>33</td>
+      <td>23528.40</td>
+      <td>1</td>
+      <td>-0.309752</td>
+      <td>0.318574</td>
+      <td>0.306122</td>
+      <td>0.333333</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>585</th>
+      <td>ID12686</td>
+      <td>20</td>
+      <td>9516.91</td>
+      <td>3</td>
+      <td>-1.395958</td>
+      <td>0.077478</td>
+      <td>0.040816</td>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>586</th>
+      <td>ID12687</td>
+      <td>20</td>
+      <td>18364.90</td>
+      <td>1</td>
+      <td>-0.710039</td>
+      <td>0.229725</td>
+      <td>0.040816</td>
+      <td>0.333333</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>587</th>
+      <td>ID12688</td>
+      <td>43</td>
+      <td>31273.80</td>
+      <td>1</td>
+      <td>0.290692</td>
+      <td>0.451849</td>
+      <td>0.510204</td>
+      <td>0.333333</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>588</th>
+      <td>ID12689</td>
+      <td>58</td>
+      <td>49673.60</td>
+      <td>0</td>
+      <td>1.717092</td>
+      <td>0.768454</td>
+      <td>0.816327</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>589</th>
+      <td>ID12690</td>
+      <td>29</td>
+      <td>12623.40</td>
+      <td>1</td>
+      <td>-1.155135</td>
+      <td>0.130931</td>
+      <td>0.224490</td>
+      <td>0.333333</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>590</th>
+      <td>ID12691</td>
+      <td>25</td>
+      <td>23818.60</td>
+      <td>0</td>
+      <td>-0.287255</td>
+      <td>0.323567</td>
+      <td>0.142857</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>591</th>
+      <td>ID12692</td>
+      <td>40</td>
+      <td>31473.90</td>
+      <td>2</td>
+      <td>0.306204</td>
+      <td>0.455292</td>
+      <td>0.448980</td>
+      <td>0.666667</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>592</th>
+      <td>ID12693</td>
+      <td>48</td>
+      <td>20268.00</td>
+      <td>0</td>
+      <td>-0.562506</td>
+      <td>0.262472</td>
+      <td>0.612245</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>593</th>
+      <td>ID12694</td>
+      <td>65</td>
+      <td>51417.00</td>
+      <td>2</td>
+      <td>1.852244</td>
+      <td>0.798453</td>
+      <td>0.959184</td>
+      <td>0.666667</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>594</th>
+      <td>ID12695</td>
+      <td>59</td>
+      <td>30971.80</td>
+      <td>3</td>
+      <td>0.267280</td>
+      <td>0.446652</td>
+      <td>0.836735</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>595</th>
+      <td>ID12696</td>
+      <td>61</td>
+      <td>47025.00</td>
+      <td>2</td>
+      <td>1.511765</td>
+      <td>0.722880</td>
+      <td>0.877551</td>
+      <td>0.666667</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>596</th>
+      <td>ID12697</td>
+      <td>30</td>
+      <td>9672.25</td>
+      <td>0</td>
+      <td>-1.383916</td>
+      <td>0.080151</td>
+      <td>0.244898</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>597</th>
+      <td>ID12698</td>
+      <td>31</td>
+      <td>15976.30</td>
+      <td>0</td>
+      <td>-0.895210</td>
+      <td>0.188625</td>
+      <td>0.265306</td>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>598</th>
+      <td>ID12699</td>
+      <td>29</td>
+      <td>14711.80</td>
+      <td>0</td>
+      <td>-0.993237</td>
+      <td>0.166866</td>
+      <td>0.224490</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>599</th>
+      <td>ID12700</td>
+      <td>38</td>
+      <td>26671.60</td>
+      <td>0</td>
+      <td>-0.066083</td>
+      <td>0.372659</td>
+      <td>0.408163</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>600 rows &#215; 29 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[529]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Saving to CSV</span>
+<span class="n">bank_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;bank_numeric.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[530]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">##Creating Correlation Matrix</span>
+<span class="n">without_ID</span> <span class="o">=</span> <span class="n">bank_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">without_ID</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="c1">##Note: the dataframe is truncating, printed the entire thing to see all correlations.</span>
+<span class="c1">##Another method for this: unstack and quicksort (but that takes further effort to eliminate duplication and </span>
+<span class="c1">##self-correlation)</span>
+<span class="n">corr_matrix</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;corr_matrix.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[531]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Some of these correlations are nonsense, so this is where intuition is necessary.</span>
+<span class="c1">## You have to think about what data is relevant to the task. (Correlation between &#39;age&#39; and &#39;young&#39; </span>
+<span class="c1">## (from the age bins) does nothing for us)</span>
+<span class="c1">## I&#39;d consider anything over a .5 to be a strong correlation, and anything over a .3 to be a moderate correlation.</span>
+<span class="c1">## Anything from .1 - .3 would be a weak correlation</span>
+
+<span class="c1">## Most Significant Observations:</span>
+<span class="c1">## Income and age has a significant positive correlation. Older people were more likely to make more money.</span>
+<span class="c1">## Unmarried people were slightly more likely to buy PEP than married people.</span>
+<span class="c1">## Older people were a bit more likely to have a savings account, and were also a bit more likely to buy PEP.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[532]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 8.Using Matplotlib library and/or ploting capabilities of Pandas, </span>
+<span class="c1">## create a scatter plot of the (non-normalized)</span>
+<span class="c1">## Income attribute relative to Age. Be sure that your plot contains </span>
+<span class="c1">## appropriate labels for the axes. Do these variables seem correlated?</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[533]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bank_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;income&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Income&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[533]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0,0.5,&#39;Income&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[&#160;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Yes, age and income are very significantly correlated.</span>
+<span class="c1">## As age goes up, income tends to go up with it.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[534]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 9.Create histograms for (non-normalized) Income (using 9 bins) </span>
+<span class="c1">## and Age (using 15 bins).</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[542]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Histogram for non-normalized income using 9 bins</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Non-Normalized Income&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[546]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Histogram for non-normalized age using 15 bins</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bank_data</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Non-Normalized Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[&#160;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 10.Using a bar graph, plot the distribution of the values of the region attribute.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[557]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bank_data</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[557]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1fcbc2b8ef0&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[&#160;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## 11.Perform a cross-tabulation of the region attribute with the pep attribute. </span>
+<span class="c1">## This requires the aggregation of</span>
+<span class="c1">## the occurrences of each pep value (yes or no) separately for each value of the region attribute. </span>
+<span class="c1">## Show the</span>
+<span class="c1">## results as a 4 by 2 (region x pep) table with entries representing the counts. </span>
+<span class="c1">## [Hint: you can either use</span>
+<span class="c1">## Numpy or use aggregations functions in Pandas such as groupby() and cross-tab().]</span>
+<span class="c1">## Then, either using</span>
+<span class="c1">## Matplotlib directly or the plot() function in Pandas create a bar chart graph to visualize of the </span>
+<span class="c1">## relationships</span>
+<span class="c1">## between these sets of variables. [Hint: This example of creating simple bar charts using Matplotlib</span>
+<span class="c1">## may be useful.]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[565]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">cross_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">([</span><span class="n">bank_data</span><span class="o">.</span><span class="n">PEP_YES</span><span class="p">,</span> <span class="n">bank_data</span><span class="o">.</span><span class="n">PEP_NO</span><span class="p">],</span> <span class="p">[</span><span class="n">bank_data</span><span class="o">.</span><span class="n">INNER_CITY</span><span class="p">,</span> <span class="n">bank_data</span><span class="o">.</span><span class="n">TOWN</span><span class="p">,</span> <span class="n">bank_data</span><span class="o">.</span><span class="n">RURAL</span><span class="p">,</span> <span class="n">bank_data</span><span class="o">.</span><span class="n">SUBURBAN</span><span class="p">],</span>  <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cross_tab</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[565]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>INNER_CITY</th>
+      <th colspan="3">0</th>
+      <th>1</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>TOWN</th>
+      <th colspan="2">0</th>
+      <th>1</th>
+      <th>0</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>RURAL</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>0</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>SUBURBAN</th>
+      <th>1</th>
+      <th>0</th>
+      <th>0</th>
+      <th>0</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>PEP_YES</th>
+      <th>PEP_NO</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <th>1</th>
+      <td>28</td>
+      <td>50</td>
+      <td>102</td>
+      <td>146</td>
+      <td>326</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <th>0</th>
+      <td>34</td>
+      <td>46</td>
+      <td>71</td>
+      <td>123</td>
+      <td>274</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <td>62</td>
+      <td>96</td>
+      <td>173</td>
+      <td>269</td>
+      <td>600</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#160;[572]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">pep_yes</span> <span class="o">=</span> <span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+<span class="n">pep_no</span> <span class="o">=</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">146</span><span class="p">)</span>
+
+<span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>  <span class="c1"># the x locations for the groups</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.35</span>       <span class="c1"># the width of the bars</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">rects1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">pep_yes</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">rects2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ind</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">pep_no</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="c1"># add some text for labels, title and axes ticks</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Scores&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;PEP by Region&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ind</span> <span class="o">+</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">((</span><span class="s1">&#39;Inner City&#39;</span><span class="p">,</span> <span class="s1">&#39;Town&#39;</span><span class="p">,</span> <span class="s1">&#39;Rural&#39;</span><span class="p">,</span> <span class="s1">&#39;Suburban&#39;</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="n">rects1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rects2</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;Yes PEP&#39;</span><span class="p">,</span> <span class="s1">&#39;No PEP&#39;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">autolabel</span><span class="p">(</span><span class="n">rects</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">1.05</span><span class="o">*</span><span class="n">height</span><span class="p">,</span>
+                <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">),</span>
+                <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="n">autolabel</span><span class="p">(</span><span class="n">rects1</span><span class="p">)</span>
+<span class="n">autolabel</span><span class="p">(</span><span class="n">rects2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea">
+<img src="javascript://"/>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+
+ 
+
+
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=10.8.7.13624-324 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'); });</script></body></html>
